@@ -15,7 +15,7 @@
         .col-xs-8.text-white.text-uppercase.stretched-link{:href => "#"} SDGs flow
         - if user_signed_in?
           %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "edit_user_path"}=current_user.name
-          %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "destroy_user_session_path, method: :delete"} ログアウト
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"text-white"
         - else
           %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "#"} 新規登録
           %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "#"} ログイン
