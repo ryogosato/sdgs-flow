@@ -12,15 +12,14 @@
   %body
     .container-fluid
       %header.row.p-5.mb-2.bg-primary
-        %a.col-xs-8.text-white.text-uppercase.stretched-link{:href => "#"} SDGs flow
-        %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "#"} 新規登録
-        %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "#"} ログイン
-      .media
-        %a.media-left{:href => "#"}
-        %img.img-fluid{:src => "assets/SDGs.jpeg"}/
+        .col-xs-8.text-white.text-uppercase.stretched-link{:href => "#"} SDGs flow
+        - if user_signed_in?
+          %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "edit_user_path"}=current_user.name
+          %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "destroy_user_session_path, method: :delete"} ログアウト
+        - else
+          %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "#"} 新規登録
+          %a.col-xs-2.text-white.text-lowercase.stretched-link{:href => "#"} ログイン
+  = yield
 
-    = yield
-  -# %script{:crossorigin => "anonymous", :integrity => "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n", :src => "https://code.jquery.com/jquery-3.4.1.slim.min.js"}
-  -# %script{:crossorigin => "anonymous", :integrity => "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo", :src => "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"}
-  -# %script{:crossorigin => "anonymous", :integrity => "sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6", :src => "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"}
-    
+
+
